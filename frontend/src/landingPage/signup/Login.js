@@ -43,7 +43,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "https://zerodha-clone-hq1y.onrender.com";
+          window.location.href = "https://zerodhadash.netlify.app";
 
         }, 1000);
       } else {
