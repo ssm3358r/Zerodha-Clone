@@ -24,7 +24,7 @@ const BuyActionWindow = ({ uid }) => {
 
 
   const onClickBuy=()=>{
-    axios.post("http://localhost:3002/addorders",
+    axios.post("https://zerodha-clone-hq1y.onrender.com/addorders",
       {
          name: uid,
      qty: stockQty,
@@ -36,7 +36,7 @@ const BuyActionWindow = ({ uid }) => {
     setIsOpen(false);
   }
   const onClickSell=()=>{
-    axios.post("http://localhost:3002/addorders",
+    axios.post("https://zerodha-clone-hq1y.onrender.com/addorders",
       {
          name: uid,
      qty: stockQty,

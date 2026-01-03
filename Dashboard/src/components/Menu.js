@@ -16,9 +16,9 @@ const Menu = () => {
 
   const handleLogout=async ()=>{
     try{
-      const {data}=await axios.get("http://localhost:3002/logout",{withCredentials:true});
+      const {data}=await axios.get("https://zerodha-clone-hq1y.onrender.com/logout",{withCredentials:true});
     if ( data.success) {
-          window.location.href = "http://localhost:3000/login";
+          window.location.href = "https://zerodha-clone-hq1y.onrender.com/login";
         }
     }
     catch(err){
@@ -34,7 +34,7 @@ const Menu = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3002/user",
+          "https://zerodha-clone-hq1y.onrender.com/user",
           { withCredentials: true }
         );
         if (data && data.success && data.user) {
