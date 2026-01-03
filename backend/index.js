@@ -1,10 +1,15 @@
-if(process.env.Node_ENV!=="production")
+if(process.env.NODE_ENV!=="production")
 {
 require("dotenv").config();
 }
 const express=require("express");
 const app=express();
-const port=3002;
+
+
+app.listen(PORT, () => {
+  console.log(`listening at port ${PORT}`);
+});
+;
 const mongoose=require("mongoose");
 const User=require("./Models/user");
 const session=require("express-session");
@@ -16,9 +21,12 @@ const Order = require("./Models/orders");
 const cors=require("cors");
 
 const allowedOrigins = [
-    process.env.FRONTEND_ORIGIN || process.env.DASHBOARD_ORIGIN|| "http://localhost:3000",
-    "http://localhost:3001",
-];
+  "http://localhost:3000",
+  "http://localhost:3001",
+  process.env.FRONTEND_ORIGIN,
+  process.env.DASHBOARD_ORIGIN,
+].filter(Boolean); 
+
 const corsOptions = {
     origin: function (origin, callback) {
         // allow requests with no origin (like mobile apps, curl, Postman)
@@ -37,8 +45,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const uri=process.env.MONGO_URL;
-app.listen(port ,()=>{
-    console.log(`listening at port ${port}`);
+const PORT = process.env.PORT || 3002;
+app.listen(PORT ,()=>{
+    console.log(`listening at port ${PORT}`);
     mongoose.connect(uri).then(()=>{
         console.log('connected to mongodb server ');
         
