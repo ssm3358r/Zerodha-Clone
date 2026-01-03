@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 function LeftSection({imgUrl,title,desc,link1,link2,googlePlay,appStore,dash1,dash2}) {
     return (
@@ -11,8 +13,8 @@ function LeftSection({imgUrl,title,desc,link1,link2,googlePlay,appStore,dash1,da
                     <h3 className='py-4 mb-3'>{title}</h3>
                     <p>{desc}</p>
                    <div className='mb-4 gap-3 d-flex' >
-                     <a href="#">{link1}<i class={dash1}></i></a>
-                    <a href="#">{link2}<i class={dash2}></i></a>
+                     <Link to="#">{link1}<i class={dash1}></i></Link>
+                    <Link to="#">{link2}<i class={dash2}></i></Link>
                    </div>
                     <div className='gap-3 d-flex'>
                         <img src={googlePlay} alt="GooglePlayImage" />

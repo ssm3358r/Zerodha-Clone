@@ -78,9 +78,9 @@ function AccordionItem({ section, isOpen, onToggle }) {
           <ul style={{ margin: 0, paddingLeft: 20 }}>
             {section.items.map((it, idx) => (
               <li key={idx} style={{ margin: "10px 0" }}>
-                <a href="#" style={{ color: "#2b6fb3", textDecoration: "none" }}>
+                <Link to="#" style={{ color: "#2b6fb3", textDecoration: "none" }}>
                   {it}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -121,14 +121,14 @@ function Questions() {
           >
             <ul style={{ margin: 0, paddingLeft: 18 }}>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#1a73e8" }}>
+                <Link to="#" style={{ color: "#1a73e8" }}>
                   Latest Intraday leverages and Square-off timings
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#1a73e8" }}>
+                <Link to="#" style={{ color: "#1a73e8" }}>
                   Offer for sale (OFS) – December 2025
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -137,29 +137,29 @@ function Questions() {
             <div style={{ padding: 12, borderBottom: "1px solid #f2f2f2", fontWeight: 600 }}>Quick links</div>
             <ol style={{ margin: 0, padding: 12, listStylePosition: "inside" }}>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#2b6fb3" }}>
+                <Link to="#" style={{ color: "#2b6fb3" }}>
                   Track account opening
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#2b6fb3" }}>
+                <Link to="#" style={{ color: "#2b6fb3" }}>
                   Track segment activation
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#2b6fb3" }}>
+                <Link to="#" style={{ color: "#2b6fb3" }}>
                   Intraday margins
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#2b6fb3" }}>
+                <Link to="#" style={{ color: "#2b6fb3" }}>
                   Kite user manual
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "8px 0" }}>
-                <a href="#" style={{ color: "#2b6fb3" }}>
+                <Link to="#" style={{ color: "#2b6fb3" }}>
                   Learn how to create a ticket
-                </a>
+                </Link>
               </li>
             </ol>
           </div>

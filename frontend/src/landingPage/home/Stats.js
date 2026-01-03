@@ -20,13 +20,13 @@ function Stats() {
                     <img src="media\images\ecosystem.png" style={{width : "90%"}} alt="EcosystemImage" />
 
                     <div className='text-center mt-2'>
-                        <a className='mx-5 fs-5'style={{textDecoration : "none"}} href="">Explore our products &nbsp; 
+                        <Link to="#"  className='mx-5 fs-5'style={{textDecoration : "none"}} href="">Explore our products &nbsp; 
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                            </a>
+                            </Link>
 
-                        <a className='fs-5 'style={{textDecoration : "none"}} href="">Try Kite demo&nbsp; 
+                        <Link to="#"  className='fs-5 'style={{textDecoration : "none"}} href="">Try Kite demo&nbsp; 
                              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                             </a>
+                             </Link>
                     </div>
                 </div>
             </div>

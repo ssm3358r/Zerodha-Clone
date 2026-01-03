@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import HomePage from './landingPage/home/HomePage';
-import { BrowserRouter ,Route,Routes,Link  } from 'react-router-dom';
+import { BrowserRouter ,Route,Routes  } from 'react-router-dom';
 import PricingPage from './landingPage/pricing/PricingPage';
 import SignUp from './landingPage/signup/SignUp';
 import Login from './landingPage/signup/Login';

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="container  bg-light">
@@ -50,35 +50,35 @@ function Footer() {
             <ul className="list-unstyled">
               <h1 className="nav-head ">Account</h1>
               <li>
-                <a href="">Open demat account</a>
+                <Link to="#">Open demat account</Link>
               </li>
               <br />
               <li>
-                <a href="">Minor demat account</a>
+                <Link to="#">Minor demat account</Link>
               </li>
               <br />
               <li>
-                <a href="">NRI demat account</a>
+                <Link to="#">NRI demat account</Link>
               </li>
               <br />
               <li>
-                <a href="">Commodity</a>
+                <Link to="#">Commodity</Link>
               </li>
               <br />
               <li>
-                <a href="">Dematerialisation</a>
+                <Link to="#">Dematerialisation</Link>
               </li>
               <br />
               <li>
-                <a href="">Fund transfer</a>
+                <Link to="#">Fund transfer</Link>
               </li>
               <br />
               <li>
-                <a href="">MTF</a>
+                <Link to="#">MTF</Link>
               </li>
               <br />
               <li>
-                <a href="">Referral program</a>
+                <Link to="#">Referral program</Link>
               </li>
             </ul>
           </div>
@@ -86,35 +86,35 @@ function Footer() {
             <ul className="list-unstyled">
               <h1 className="nav-head">Support</h1>
               <li>
-                <a href="">Contact us</a>
+                <Link to="#">Contact us</Link>
               </li>
               <br />
               <li>
-                <a href="">Support portal</a>
+                <Link to="#">Support portal</Link>
               </li>
               <br />
               <li>
-                <a href="">How to file a complaint?</a>
+                <Link to="#">How to file a complaint?</Link>
               </li>
               <br />
               <li>
-                <a href="">Status of your complaints</a>
+                <Link to="#">Status of your complaints</Link>
               </li>
               <br />
               <li>
-                <a href="">Bulletin</a>
+                <Link to="#">Bulletin</Link>
               </li>
               <br />
               <li>
-                <a href="">Circular</a>
+                <Link to="#">Circular</Link>
               </li>
               <br />
               <li>
-                <a href="">Z-Connect blog</a>
+                <Link to="#">Z-Connect blog</Link>
               </li>
               <br />
               <li>
-                <a href="">Downloads</a>
+                <Link to="#">Downloads</Link>
               </li>
             </ul>
           </div>
@@ -123,31 +123,31 @@ function Footer() {
             <ul className="list-unstyled">
               <h1 className="nav-head">Company</h1>
               <li>
-                <a href="">About</a>
+                <Link to="#">About</Link>
               </li>
               <br />
               <li>
-                <a href="">Philosophy</a>
+                <Link to="#">Philosophy</Link>
               </li>
               <br />
               <li>
-                <a href="">Press & media</a>
+                <Link to="#">Press & media</Link>
               </li>
               <br />
               <li>
-                <a href="">Careers</a>
+                <Link to="#">Careers</Link>
               </li>
               <br />
               <li>
-                <a href="">Zerodha Cares (CSR)</a>
+                <Link to="#">Zerodha Cares (CSR)</Link>
               </li>
               <br />
               <li>
-                <a href="">Zerodha.tech</a>
+                <Link to="#">Zerodha.tech</Link>
               </li>
               <br />
               <li>
-                <a href="">Open source</a>
+                <Link to="#">Open source</Link>
               </li>
             </ul>
           </div>
@@ -156,31 +156,31 @@ function Footer() {
             <ul className="list-unstyled">
               <h1 className="nav-head">Quick links</h1>
               <li>
-                <a href="">Upcoming IPOs</a>
+                <Link to="#">Upcoming IPOs</Link>
               </li>
               <br />
               <li>
-                <a href="">Brokerage charges</a>
+                <Link to="#">Brokerage charges</Link>
               </li>
               <br />
               <li>
-                <a href="">Market holidays</a>
+                <Link to="#">Market holidays</Link>
               </li>
               <br />
               <li>
-                <a href="">Economic calendar</a>
+                <Link to="#">Economic calendar</Link>
               </li>
               <br />
               <li>
-                <a href="">Calculators</a>
+                <Link to="#">Calculators</Link>
               </li>
               <br />
               <li>
-                <a href="">Markets</a>
+                <Link to="#">Markets</Link>
               </li>
               <br />
               <li>
-                <a href="">Sectors</a>
+                <Link to="#">Sectors</Link>
               </li>
             </ul>
           </div>

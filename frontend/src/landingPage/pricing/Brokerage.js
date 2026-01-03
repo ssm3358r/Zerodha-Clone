@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const commodityTable = [
   [
@@ -238,7 +239,7 @@ function Brokerage() {
       </div>
       <p className="text-center my-5 fs-5 text-muted">
         {" "}
-        <a href="#">Calculate your costs upfront</a> using our brokerage calculator
+        <Link to="#">Calculate your costs upfront</Link> using our brokerage calculator
       </p>
     </section>
   );
