@@ -43,7 +43,8 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/dashboard");
+          window.location.href = "http://localhost:3001/";
+
         }, 1000);
       } else {
         handleError(message);

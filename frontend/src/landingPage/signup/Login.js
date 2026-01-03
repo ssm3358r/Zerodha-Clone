@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "./auth.css";
 
 const Login = () => {
-  const navigate = useNavigate();
+ 
   const [inputValue, setInputValue] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-  const { email, password } = inputValue;
+  const { username, password } = inputValue;
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -54,7 +54,7 @@ const Login = () => {
     }
     setInputValue({
       ...inputValue,
-      email: "",
+      username: "",
       password: "",
     });
   };
@@ -71,12 +71,12 @@ const Login = () => {
           
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-group">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="username" className="form-label">Username</label>
               <input
-                type="email"
-                name="email"
-                value={email}
-                placeholder="your@email.com"
+                type="text"
+                name="username"
+                value={username}
+                placeholder="Radhe"
                 onChange={handleOnChange}
                 className="form-input"
                 required

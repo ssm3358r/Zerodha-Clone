@@ -24,25 +24,26 @@ const BuyActionWindow = ({ uid }) => {
 
 
   const onClickBuy=()=>{
-    axios.post("http://localhost:3002/newOrder",
+    axios.post("http://localhost:3002/addorders",
       {
          name: uid,
      qty: stockQty,
      price:stockPrice,
      mode:"buy"
-      }
+      },{withCredentials:true}
     )
     closeBuyWindow();
     setIsOpen(false);
   }
   const onClickSell=()=>{
-    axios.post("http://localhost:3002/newOrder",
+    axios.post("http://localhost:3002/addorders",
       {
          name: uid,
      qty: stockQty,
      price:stockPrice,
      mode:"sell"
-      }
+      },
+      {withCredentials:true}
     )
     closeBuyWindow();
     setIsOpen(false);

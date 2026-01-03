@@ -14,18 +14,30 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   }
 
-  const navigate = useNavigate();
+  const handleLogout=async ()=>{
+    try{
+      const {data}=await axios.get("http://localhost:3002/logout",{withCredentials:true});
+    if ( data.success) {
+          window.location.href = "http://localhost:3000/login";
+        }
+    }
+    catch(err){
+           console.error("Failed to fetch user:", err.message || err);
+
+    }
+
+  }
+
 
   useEffect(() => {
     // verify user from backend (auth route POST '/')
     const fetchUser = async () => {
       try {
-        const { data } = await axios.post(
-          "http://localhost:3002/",
-          {},
+        const { data } = await axios.get(
+          "http://localhost:3002/user",
           { withCredentials: true }
         );
-        if (data && data.status && data.user) {
+        if (data && data.success && data.user) {
           setUser(data.user);
         }
       } catch (err) {
@@ -90,7 +102,7 @@ const Menu = () => {
             </div>
             <hr />
             <Link to="/profile" className="dropdown-item">View Profile</Link>
-            <button className="dropdown-item logout" >Logout</button>
+            <button className="dropdown-item logout" onClick={handleLogout} >Logout</button>
           </div>
         )}
       </div>
