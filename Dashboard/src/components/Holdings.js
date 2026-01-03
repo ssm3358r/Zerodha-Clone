@@ -1,20 +1,21 @@
 import React from "react";
-import { useEffect,useState } from "react";
-import axios from"axios";
-import {VerticalGraph} from"./VerticalGraph";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { VerticalGraph } from "./VerticalGraph";
 // import {holdings} from "../data/data";
 
 
 const Holdings = () => {
   const [allHoldings,setAllHoldings]=useState([]);
-  useEffect(()=>{
-    axios.get("https://zerodha-clone-hq1y.onrender.com/allholdings").
-    then((res)=>{
-      setAllHoldings(res.data);
-      console.log(res.data);
-    })
-
-  },[])
+  useEffect(() => {
+    axios
+      .get("https://zerodha-clone-hq1y.onrender.com/allholdings")
+      .then((res) => {
+        setAllHoldings(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   const labels=allHoldings.map((subarray)=>subarray["name"]);
 

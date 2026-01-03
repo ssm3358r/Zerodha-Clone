@@ -1,17 +1,18 @@
 import React from "react";
-import {positions} from "../data/data";
-import { useEffect,useState } from "react";
-import axios from"axios";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Positions = () => {
 
   const [allPositions,setAllPositions]=useState([]);
-    useEffect(()=>{
-      axios.get("https://zerodha-clone-hq1y.onrender.com/allpositions").
-      then((res)=>{
-        setAllPositions(res.data);
-        console.log(res.data);
-      })
-    },[])
+    useEffect(() => {
+      axios
+        .get("https://zerodha-clone-hq1y.onrender.com/allpositions")
+        .then((res) => {
+          setAllPositions(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.error(err));
+    }, []);
   return (
     <>
       <h3 className="title">Positions ({allPositions.length})</h3>

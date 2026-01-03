@@ -10,7 +10,7 @@ import BuyActionWindow from "./BuyActionWindow";
 export const GeneralContextProvider = (props) => {
   const [isBuyWindowOpen, setIsBuyWindowOpen] = useState(false);
   const [selectedStockUID, setSelectedStockUID] = useState("");
-  const [isSellWindowOpen, setIsSellWindowOpen] = useState(false);
+  const [isSellWindowOpen] = useState(false);
 
   const handleOpenBuyWindow = (uid) => {
     setIsBuyWindowOpen(true);

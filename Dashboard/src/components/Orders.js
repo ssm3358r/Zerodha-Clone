@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect,useState } from "react";
-import axios from"axios";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Orders = () => {
 
   const [allOrders,setAllOrders]=useState([]);
-    useEffect(()=>{
-      axios.get("https://zerodha-clone-hq1y.onrender.com/allorders",{withCredentials:true}).
-      then((res)=>{
-        setAllOrders(res.data);
-        console.log(res.data);
-      })
-  
-    },[])
+    useEffect(() => {
+      axios
+        .get("https://zerodha-clone-hq1y.onrender.com/allorders", { withCredentials: true })
+        .then((res) => {
+          setAllOrders(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.error(err));
+
+    }, []);
 
   return (
     <>
