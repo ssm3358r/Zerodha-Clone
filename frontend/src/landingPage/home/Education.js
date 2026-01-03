@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Education() {
     return (
@@ -10,13 +11,13 @@ function Education() {
            <div className="col-6 p-5">
             <h2>Free and Open Market Education</h2>
             <p>Varsity, the largest online stock market education book in the world covering everything from the basics to advanced trading.</p>
-              <a className=' fs-5'style={{textDecoration : "none"}} href="">Varsity &nbsp; 
+              <Link className=' fs-5'style={{textDecoration : "none"}} to="#">Varsity &nbsp; 
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                            </a>
+                            </Link>
             <p className='mt-5'>TradingQ&A, the most active trading and investment community in India for all your market related queries.</p>
-              <a className=' fs-5'style={{textDecoration : "none"}} href="">TradingQ&A  &nbsp;  
+              <Link className=' fs-5'style={{textDecoration : "none"}} to="#">TradingQ&A  &nbsp;  
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                            </a>
+                            </Link>
            </div>
         </div>
     </div> 

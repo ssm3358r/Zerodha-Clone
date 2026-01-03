@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 function Team() {
     return ( 
         <div>
@@ -22,7 +22,7 @@ function Team() {
           </p> 
           <p>Playing basketball is his zen.
           </p>
-          <p>Connect on &nbsp;<a href='#'> Homepage</a>   /  <a href='#'>TradingQnA </a>  / <a href='#'>Twitter </a> </p>
+          <p>Connect on &nbsp;<Link to='#'> Homepage</Link>   /  <Link to='#'>TradingQnA </Link>  / <Link to='#'>Twitter </Link> </p>
         </div>
       </div>
       
