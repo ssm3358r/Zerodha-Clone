@@ -16,7 +16,7 @@ const Order = require("./Models/orders");
 const cors=require("cors");
 
 const allowedOrigins = [
-    process.env.FRONTEND_ORIGIN || "http://localhost:3000",
+    process.env.FRONTEND_ORIGIN || process.env.DASHBOARD_ORIGIN|| "http://localhost:3000",
     "http://localhost:3001",
 ];
 const corsOptions = {
