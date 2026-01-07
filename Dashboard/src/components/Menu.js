@@ -18,7 +18,7 @@ const Menu = () => {
     try{
       const {data}=await axios.get("https://zerodha-clone-hq1y.onrender.com/logout",{withCredentials:true});
     if ( data.success) {
-          window.location.href = "https://zerodha-clone-hq1y.onrender.com/login";
+          window.location.href = "https://zerodhastocks.netlify.app";
         }
     }
     catch(err){

@@ -1,11 +1,13 @@
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
+const _connectMongo = require('connect-mongo');
+const MongoStore = _connectMongo && _connectMongo.default ? _connectMongo.default : _connectMongo;
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const cors = require("cors");
@@ -16,6 +18,8 @@ const Position = require("./Models/positions");
 const Order = require("./Models/orders");
 
 /* ================= MIDDLEWARE ================= */
+// Trust proxy for Render/Heroku (needed for secure cookies behind proxy)
+app.set("trust proxy", 1);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -23,6 +27,8 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
+  "https://zerodhastocks.netlify.app",
+  "https://zerodhadash.netlify.app",
   process.env.FRONTEND_ORIGIN,
   process.env.DASHBOARD_ORIGIN,
 ].filter(Boolean);
@@ -30,25 +36,42 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
+      // Log for debugging
+      console.log("CORS blocked origin:", origin);
       return callback(new Error("CORS policy: Origin not allowed"));
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
 /* ================= SESSION ================= */
+const store=MongoStore.create({
+  mongoUrl:process.env.MONGO_URL,
+  crypto:{
+    secret:process.env.secret
+  },
+  
+  touchAfter:24*60*60
+})
+
 app.use(
   session({
+    store,
     secret: process.env.secret,
     resave: false,
     saveUninitialized: false,
+    name: "connect.sid", // Explicit cookie name
     cookie: {
       httpOnly: true,
-      secure: true,
-      sameSite: "none", // REQUIRED for Netlify ↔ Render
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === "production", // Only secure in production (HTTPS)
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // "none" requires secure: true
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      path: "/", // Ensure cookie is available for all paths
     },
   })
 );
@@ -71,14 +94,33 @@ const isLoggedIn = (req, res, next) => {
 app.post("/signup", async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const user = await User.register(new User({ username, email }), password);
-    res.json({ success: true, user: { id: user._id, username: user.username } });
+
+    const user = await User.register(
+      new User({ username, email }),
+      password
+    );
+
+    req.login(user, (err) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: err.message });
+      }
+
+      res.json({
+        success: true,
+        message: "Signup successful",
+        user: { id: user._id, username: user.username },
+      });
+    });
+
   } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
+
 app.post("/login", passport.authenticate("local"), (req, res) => {
+  // Session cookie is automatically set by express-session
+  // Ensure response includes proper headers
   res.json({
     success: true,
     user: { id: req.user._id, username: req.user.username },
@@ -88,7 +130,13 @@ app.post("/login", passport.authenticate("local"), (req, res) => {
 app.get("/logout", (req, res) => {
   req.logout(() => {
     req.session.destroy(() => {
-      res.clearCookie("connect.sid");
+      // Clear cookie with same options used to set it
+      res.clearCookie("connect.sid", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/",
+      });
       res.json({ success: true });
     });
   });
